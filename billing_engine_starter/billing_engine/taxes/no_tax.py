@@ -9,4 +9,15 @@ from billing_engine.taxes.base import TaxCalculator, TaxContext, TaxBreakdown
 class NoTax(TaxCalculator):
     def apply(self, taxable: Money, context: TaxContext) -> TaxBreakdown:
         # TODO Day 1
-        raise NotImplementedError("Day 1: implement NoTax.apply")
+        raise NotImplementedError("""
+NoTax — for jurisdictions where you don't charge tax (or the customer is tax-exempt).
+"""
+
+from billing_engine.money import Money
+from billing_engine.taxes.base import TaxCalculator, TaxContext, TaxBreakdown
+
+
+class NoTax(TaxCalculator):
+    def apply(self, taxable: Money, context: TaxContext) -> TaxBreakdown:
+        # TODO Day 1
+        return TaxBreakdown(components=[], total=Money.zero(taxable.currency)))
